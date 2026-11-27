@@ -14,6 +14,7 @@ document.querySelector("#reader-title").textContent = photoArticle.displayTitle;
 document.querySelector("#reader-lead").textContent = photoArticle.lead;
 
 const sourceParams = new URLSearchParams(location.search);
+const entryMaterial = stories.find((story) => story.materialPath && story.slug === sourceParams.get("article"));
 if (sourceParams.get("from") === "archive") {
   const archiveAddress = new URL(siteRoot);
   const search = (sourceParams.get("q") || "").slice(0, 120);
@@ -23,6 +24,11 @@ if (sourceParams.get("from") === "archive") {
   archiveAddress.hash = "archive";
   readerBack.href = archiveAddress.href;
   readerBack.textContent = "К архиву";
+} else if (entryMaterial) {
+  const materialAddress = new URL(materialUrl(entryMaterial));
+  materialAddress.hash = "material-context";
+  readerBack.href = materialAddress.href;
+  readerBack.textContent = "К статье";
 }
 
 frames.innerHTML = essay.frames.map((frame, index) => `

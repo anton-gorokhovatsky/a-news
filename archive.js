@@ -69,7 +69,7 @@ function showResults(updateAddress = false) {
     }
     return `
       <li>
-        <a class="story-link archive-entry" href="${articleUrl(story)}">
+        <a class="story-link archive-entry" href="${results.hasAttribute("data-material-links") ? materialUrl(story) : articleUrl(story)}">
           <span class="archive-entry__title">${html(story.title)}</span>
           <span class="archive-entry__date">${timestamp(story, dateWithYear)}</span>
         </a>

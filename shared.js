@@ -6,6 +6,7 @@ const stories = [
     "title": "Глазами архитектора: музей Гуггенхайма в Бильбао",
     "displayTitle": "Музей Гугген­хайма в Бильбао",
     "series": "Глазами архитектора",
+    "materialPath": "material/bilbao/",
     "date": "2026-11-27",
     "topics": [
       "architecture",
@@ -215,6 +216,10 @@ function timestamp(story, formatter) {
 const siteRoot = new URL("./", document.currentScript.src);
 const photoDirectory = new URL("assets/", siteRoot);
 
+function materialUrl(story) {
+  return story.materialPath ? new URL(story.materialPath, siteRoot).href : articleUrl(story);
+}
+
 function photoStoryUrl(story) {
   return new URL(story.photoStory.path, siteRoot);
 }
@@ -261,6 +266,10 @@ const externalLinkMark = `<svg class="external-link-mark" viewBox="0 0 12 12" ar
 // A bound phrase moves as a whole when it fits. A narrow line can break at its space.
 function markExternalLinks() {
   for (const label of document.querySelectorAll("[data-external-label]")) {
+    if (label.closest("a[href]")?.origin === location.origin) {
+      label.removeAttribute("data-external-label");
+      continue;
+    }
     const text = label.textContent.trimEnd();
     const lastGlyph = /[^\s\p{M}]\p{M}*$/u.exec(text);
     if (!lastGlyph) continue;

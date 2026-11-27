@@ -13,7 +13,7 @@ const latestStories = chronologicalStories.filter((story) => story !== coverStor
 
 document.querySelector("#cover").innerHTML = `
   <article>
-    <a class="cover-link" href="${articleUrl(coverStory)}" aria-labelledby="cover-title">
+    <a class="cover-link" href="${materialUrl(coverStory)}" aria-labelledby="cover-title">
       <figure>
         <div class="image-frame cover-photo">
           ${imageMarkup(coverImage, "(min-width: 68em) min(47vw, 44rem), 90vw", true)}
@@ -29,7 +29,7 @@ document.querySelector("#cover").innerHTML = `
 document.querySelector("#latest-list").innerHTML = latestStories.map((story) => `
   <li><article>
     <p class="story-meta">${timestamp(story, dateWithMonth)} · ${html(topicNames[story.topics[0]])}</p>
-    <h3><a href="${articleUrl(story)}"><span data-external-label>${html(story.title)}</span></a></h3>
+    <h3><a href="${materialUrl(story)}"><span data-external-label>${html(story.title)}</span></a></h3>
     ${story.lead ? `<p class="story-lead">${html(story.lead)}</p>` : ""}
   </article></li>`).join("");
 
