@@ -18,7 +18,9 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - [Вариант на сетке A–House](http://127.0.0.1:4178/)
 - [Первый макет](http://127.0.0.1:4178/first-draft/)
 
-При локальном HTTP-просмотре запрос и выбранная тема сохраняются в адресе. Для быстрого просмотра можно открыть [index.html](./index.html) в браузере.
+При локальном HTTP-просмотре поисковый запрос и рубрика архива сохраняются в адресе. Для быстрого просмотра можно открыть [index.html](./index.html) в браузере.
+
+Переключатель «Тема сайта» находится в подвале. По умолчанию действует системная тема. Ручной выбор хранится в этом браузере для A–News.
 
 ## Общие ресурсы A–House
 
@@ -26,8 +28,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 
 - `typography.css` и `theme.css` взяты из `src/styles/` этого коммита.
 - `fonts.css` содержит используемые начертания из `media/fonts/ahouse-fonts.css`. Файлы шрифтов взяты из того же коммита. Для Noto Serif приложен [текст лицензии](./vendor/a-house/notoserif-OFL.txt).
-
 - `external-links.css` и SVG в `front-page.js` взяты из [коммита b1e8f46 в A–House](https://github.com/anton-gorokhovatsky/a-house/commit/b1e8f46ebcc25145510003263a8504d52c222ca2).
+- `theme.js` и разметка переключателя взяты из [коммита cbceddb в A–House](https://github.com/anton-gorokhovatsky/a-house/commit/cbceddb1e283145e9511274001742a1432363e08). Для A–News ключ локального хранения называется `a-news:theme`.
 
 Чтобы обновить визуальную основу, сверяйте эти файлы с новым коммитом A–House и обновляйте ссылку на источник.
 

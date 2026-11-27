@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>A–News — онлайн-журнал A–House</title>
+  <script src="./vendor/a-house/theme.js"></script>
   <link rel="stylesheet" href="./vendor/a-house/fonts.css">
   <link rel="stylesheet" href="./vendor/a-house/typography.css">
   <link rel="stylesheet" href="./vendor/a-house/theme.css">
@@ -101,6 +102,18 @@
           </ul>
         </nav>
       </div>
+
+      <fieldset class="site-theme" id="site-theme" data-site-theme tabindex="-1" hidden>
+        <legend>Тема сайта</legend>
+        <div class="site-theme-choices">
+          <label>
+            <input type="radio" name="site-theme-choice" value="system" aria-labelledby="site-theme-system-label" aria-describedby="site-theme-system-state" checked>
+            <span><span id="site-theme-system-label">Как в системе</span><small class="theme-system-state" id="site-theme-system-state"><span class="system-light">В системе светлая</span><span class="system-dark">В системе тёмная</span></small></span>
+          </label>
+          <label><input type="radio" name="site-theme-choice" value="light">Светлая</label>
+          <label><input type="radio" name="site-theme-choice" value="dark">Тёмная</label>
+        </div>
+      </fieldset>
 
       <a class="footer-wordmark" href="#top" aria-label="A–News, к началу страницы">A–NEWS</a>
     </div>
