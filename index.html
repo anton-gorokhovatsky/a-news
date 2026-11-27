@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./vendor/a-house/fonts.css">
   <link rel="stylesheet" href="./vendor/a-house/typography.css">
   <link rel="stylesheet" href="./vendor/a-house/theme.css">
+  <link rel="stylesheet" href="./vendor/a-house/external-links.css">
   <link rel="stylesheet" href="./news.css">
   <script src="./shared.js" defer></script>
   <script src="./front-page.js" defer></script>
@@ -27,7 +28,7 @@
     </div>
   </header>
 
-  <main class="news-shell" id="content" tabindex="-1">
+  <main class="news-shell home-editorial" id="content" tabindex="-1">
     <p class="news-intro">Онлайн-журнал <a href="https://ahouseproject.com/">A–House</a> об архитектуре, дизайне и культуре.</p>
     <noscript>
       <p>Для просмотра макета включите JavaScript или <a href="https://news.ahouseproject.com/">откройте журнал A–News</a>.</p>
@@ -48,7 +49,7 @@
     <section class="news-chapter" id="in-print" aria-labelledby="print-title">
       <header class="section-head">
         <h2 id="print-title">Из печати</h2>
-        <a class="section-link" href="https://ahouseproject.com/press">Издательство A–Press&nbsp;<span aria-hidden="true">↗</span></a>
+        <a class="section-link" href="https://ahouseproject.com/press"><span>Издательство <span class="project-name" data-external-label>A–Press</span></span></a>
       </header>
       <div id="print-story"></div>
     </section>
@@ -56,7 +57,7 @@
     <section class="news-chapter archive" id="archive" aria-labelledby="archive-title">
       <header class="section-head">
         <h2 id="archive-title">Архив</h2>
-        <a class="section-link" href="https://news.ahouseproject.com/">Весь журнал&nbsp;<span aria-hidden="true">↗</span></a>
+        <a class="section-link" href="https://news.ahouseproject.com/"><span data-external-label>Весь журнал</span></a>
       </header>
       <div class="archive__layout">
         <form class="archive-form" id="archive-form" role="search" action="#archive">
@@ -80,13 +81,28 @@
 
   <footer class="news-footer">
     <div class="news-shell footer-inner">
-      <a class="news-wordmark" href="#top" aria-label="A–News, к началу страницы">A–NEWS</a>
-      <nav aria-label="Сайты A–House">
-        <a href="https://ahouseproject.com/">A–House&nbsp;<span aria-hidden="true">↗</span></a>
-        <a href="https://aindexproject.com/">A–Index&nbsp;<span aria-hidden="true">↗</span></a>
-        <a href="https://ahouseproject.com/press">A–Press&nbsp;<span aria-hidden="true">↗</span></a>
-        <a href="https://t.me/ahouseproject">Telegram&nbsp;<span aria-hidden="true">↗</span></a>
-      </nav>
+      <div class="footer-navigation">
+        <nav aria-labelledby="footer-journal">
+          <h2 id="footer-journal">Журнал</h2>
+          <ul role="list">
+            <li><a href="#latest">Свежее</a></li>
+            <li><a href="#in-print">Из печати</a></li>
+            <li><a href="#archive">Архив</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-house">
+          <h2 id="footer-house">A–House</h2>
+          <ul role="list">
+            <li><a href="https://ahouseproject.com/"><span>Сайт <span class="project-name" data-external-label>A–House</span></span></a></li>
+            <li><a href="https://aindexproject.com/"><span>Справочник <span class="project-name" data-external-label>A–Index</span></span></a></li>
+            <li><a href="https://ahouseproject.com/press"><span>Издательство <span class="project-name" data-external-label>A–Press</span></span></a></li>
+            <li><a href="https://t.me/ahouseproject"><span data-external-label>Канал в Telegram</span></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a class="footer-wordmark" href="#top" aria-label="A–News, к началу страницы">A–NEWS</a>
     </div>
   </footer>
 </body>

@@ -71,8 +71,6 @@ button, input { font: inherit; color: inherit; }
 
 .header-inner,
 .news-nav,
-.footer-inner,
-.footer-inner nav,
 .section-head {
   display: flex;
   align-items: center;
@@ -81,7 +79,7 @@ button, input { font: inherit; color: inherit; }
 }
 
 .header-inner { min-block-size: 4rem; gap: 0 1.15rem; }
-.news-nav, .footer-inner nav { gap: 0 clamp(1rem, 1.65vw, 1.65rem); }
+.news-nav { gap: 0 clamp(1rem, 1.65vw, 1.65rem); }
 
 .news-wordmark {
   font: 400 clamp(2rem, 2.8vw, 2.65rem)/1 var(--display);
@@ -90,7 +88,7 @@ button, input { font: inherit; color: inherit; }
   text-decoration: none;
 }
 
-.news-nav a, .footer-inner nav a, .section-link {
+.news-nav a, .footer-navigation a, .section-link {
   display: inline-flex;
   align-items: center;
   min-block-size: 44px;
@@ -121,7 +119,7 @@ button, input { font: inherit; color: inherit; }
 }
 
 .cover-link { display: block; text-decoration: none; }
-.cover-link > figure { margin-block-end: .82rem; }
+.cover-link > figure { margin-block-end: clamp(1.4rem, 2.15vw, 2rem); }
 
 .image-frame {
   background: var(--ah-surface);
@@ -143,8 +141,9 @@ button, input { font: inherit; color: inherit; }
   font: var(--label-weight) var(--type-caption)/1.4 var(--text);
 }
 
-.photo-credit { margin-block-start: .45rem; }
+.photo-credit { margin-block-start: .25rem; }
 .story-meta { margin-block-end: .3rem; }
+.cover-link .story-meta { margin-block-end: .1rem; }
 
 .cover-link h2,
 .section-head h2,
@@ -172,16 +171,9 @@ button, input { font: inherit; color: inherit; }
   text-underline-offset: .13em;
 }
 
-.story-arrow {
-  display: inline-block;
-  font: 400 .48em/1 var(--text);
-  vertical-align: .38em;
-}
-
-.cover-lead, .print-lead {
-  margin-block-start: .6rem;
-  max-inline-size: 45ch;
-}
+.cover-lead, .print-lead { max-inline-size: 45ch; }
+.cover-lead { margin-block-start: .34rem; }
+.print-lead { margin-block-start: .6rem; }
 
 .section-head {
   align-items: baseline;
@@ -208,8 +200,8 @@ button, input { font: inherit; color: inherit; }
   text-wrap: pretty;
 }
 
-.latest-list h3 a > span:not(.story-arrow),
-.print-story h3 a > span:not(.story-arrow) { overflow-wrap: anywhere; }
+.latest-list h3 [data-external-label],
+.print-story h3 [data-external-label] { overflow-wrap: anywhere; }
 
 .latest-list .story-lead {
   margin-block-start: .4rem;
@@ -345,14 +337,39 @@ button, input { font: inherit; color: inherit; }
 }
 
 .news-footer {
-  margin-block-start: var(--news-chapter-gap);
-  padding-block: clamp(1.4rem, 3.2vw, 2.8rem);
+  margin-block-start: clamp(3.25rem, 6.5vw, 6.5rem);
+  padding-block: clamp(1.4rem, 3.2vw, 2.8rem) clamp(1.35rem, 3vw, 2.75rem);
   background-color: var(--ah-contacts);
   color: #f2f0eb;
 }
 
-.footer-inner { gap: .65rem 2rem; }
-.footer-inner nav { justify-content: start; }
+.footer-inner { container-type: inline-size; }
+
+.footer-navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(8.5rem, 100%), 1fr));
+  gap: 1.1rem clamp(1.25rem, 4vw, 4.5rem);
+}
+
+.footer-navigation nav { min-inline-size: 0; }
+
+.footer-navigation h2 {
+  font: var(--emphasis-weight) var(--type-ui)/1.3 var(--text);
+}
+
+.footer-navigation ul { margin-block-start: .15rem; }
+
+.footer-wordmark {
+  display: block;
+  inline-size: max-content;
+  max-inline-size: 100%;
+  margin-block-start: clamp(1.8rem, 4.2vw, 3.6rem);
+  font: 400 min(23.4vw, 22rem)/.83 var(--display);
+  font-size: 26.6cqi;
+  letter-spacing: -.045em;
+  text-decoration: none;
+  white-space: nowrap;
+}
 
 @media (max-width: 26.5em) {
   .archive-topics {
@@ -378,8 +395,6 @@ button, input { font: inherit; color: inherit; }
     align-items: start;
   }
 
-  .cover-link > figure { margin-block-end: 1rem; }
-
   .print-story {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.23fr);
     grid-template-areas: "copy photo";
@@ -390,6 +405,17 @@ button, input { font: inherit; color: inherit; }
   .archive__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
     gap: var(--news-column-gap);
+  }
+
+  .footer-navigation {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.23fr);
+    column-gap: var(--news-column-gap);
+  }
+
+  .footer-navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 clamp(1rem, 1.65vw, 1.65rem);
   }
 }
 

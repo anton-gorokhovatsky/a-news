@@ -27,6 +27,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `typography.css` и `theme.css` взяты из `src/styles/` этого коммита.
 - `fonts.css` содержит используемые начертания из `media/fonts/ahouse-fonts.css`. Файлы шрифтов взяты из того же коммита. Для Noto Serif приложен [текст лицензии](./vendor/a-house/notoserif-OFL.txt).
 
+- `external-links.css` и SVG в `front-page.js` взяты из [коммита b1e8f46 в A–House](https://github.com/anton-gorokhovatsky/a-house/commit/b1e8f46ebcc25145510003263a8504d52c222ca2).
+
 Чтобы обновить визуальную основу, сверяйте эти файлы с новым коммитом A–House и обновляйте ссылку на источник.
 
 ## Материалы

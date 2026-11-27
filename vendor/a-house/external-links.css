@@ -1,0 +1,18 @@
+.external-link-ending { white-space: nowrap; }
+.external-link-mark {
+  display: inline-block;
+  inline-size: var(--external-link-size, .75em);
+  block-size: var(--external-link-size, .75em);
+  margin-inline-start: var(--external-link-gap, .23em);
+  vertical-align: .04em;
+}
+.external-link-mark > .external-link-outline { display: var(--external-link-outline-display, inline); }
+.external-link-mark > .external-link-serif { display: var(--external-link-serif-display, none); }
+
+/* The tapered arrow matches the contrast of the serif display headings. */
+:where(.home-editorial :is(h1, h2, h3), .home-project-feature h4) .external-link-mark {
+  --external-link-size: .64em;
+  --external-link-gap: .19em;
+  --external-link-outline-display: none;
+  --external-link-serif-display: inline;
+}
