@@ -405,6 +405,9 @@ button, input { font: inherit; color: inherit; }
     align-items: start;
   }
 
+  /* Align the visible caps in the heading with the adjacent photo. */
+  .latest { margin-block-start: calc(-.17 * var(--news-section-title)); }
+
   .print-story,
   .archive__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
