@@ -8,7 +8,7 @@
   --news-section-title: clamp(2.0625rem, 1.5rem + 2.12vw, 3.75rem);
   --news-feature-title: clamp(2.35rem, 1.4rem + 2.6vw, 3.75rem);
   --news-serif-top-gap: .17;
-  scroll-padding-block-start: 4.8rem;
+  scroll-padding-block-start: calc(var(--news-header-height, 4.8rem) + .5em);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -151,6 +151,7 @@ button, input { font: inherit; color: inherit; }
 .cover-link h2,
 .section-head h2,
 .latest-list h3,
+.photo-feature h2,
 .print-story h3 {
   font-family: var(--display);
   font-weight: 400;
@@ -174,8 +175,8 @@ button, input { font: inherit; color: inherit; }
   text-underline-offset: .13em;
 }
 
-.cover-lead, .print-lead { max-inline-size: 45ch; }
-.cover-lead { margin-block-start: .34rem; }
+.cover-lead, .photo-feature__lead, .print-lead { max-inline-size: 45ch; }
+.cover-lead, .photo-feature__lead { margin-block-start: .34rem; }
 .print-lead { margin-block-start: .6rem; }
 
 .section-head {
@@ -395,29 +396,23 @@ button, input { font: inherit; color: inherit; }
   text-decoration: none;
 }
 
-.latest-photo {
-  max-inline-size: 44rem;
-  margin-block-start: var(--news-story-gap);
-  padding-block-start: clamp(.875rem, 1.8vw, 1.5rem);
-  border-block-start: 1px solid var(--ah-rule);
-}
-
-.photo-teaser {
+.photo-feature__link {
   display: grid;
-  grid-template-columns: minmax(0, min(7rem, 25vw)) minmax(0, 1fr);
-  gap: .8rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
   align-items: center;
   text-decoration: none;
 }
 
-.photo-teaser__image img { inline-size: 100%; block-size: auto; }
+.photo-feature__image { aspect-ratio: 1.5; }
 
-.photo-teaser h3 {
-  font: 400 var(--type-card)/1.14 var(--display);
+.photo-feature h2 {
+  font-size: var(--news-section-title);
+  line-height: 1.1;
   text-decoration: underline;
   text-decoration-color: var(--ah-rule);
-  text-underline-offset: .15em;
-  text-wrap: pretty;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .13em;
 }
 
 .archive-format-link {
@@ -519,6 +514,7 @@ button, input { font: inherit; color: inherit; }
 @media (min-width: 50em) {
   .header-inner { min-block-size: 4.8rem; }
 
+  .photo-feature__link,
   .print-story,
   .archive__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
@@ -576,7 +572,8 @@ button, input { font: inherit; color: inherit; }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a:hover, a:hover .headline-wrap, .cover-link:hover .story-title, .archive-entry:hover .archive-entry__title {
+  a:hover, a:hover .headline-wrap, .cover-link:hover .story-title, .archive-entry:hover .archive-entry__title,
+  .photo-feature__link:hover h2 {
     text-decoration-color: currentColor;
   }
   .news-nav a:hover { text-decoration: underline; }

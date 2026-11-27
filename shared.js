@@ -230,6 +230,29 @@ function imageMarkup(image, sizes, priority = false) {
 const chronologicalStories = [...stories].sort((first, second) => second.date.localeCompare(first.date));
 const printStory = stories.find((story) => story.image?.key === "molchanov");
 
+const newsHeader = document.querySelector(".news-header");
+if (newsHeader) {
+  const measureHeader = () => {
+    document.documentElement.style.setProperty("--news-header-height", newsHeader.offsetHeight + "px");
+  };
+  measureHeader();
+  new ResizeObserver(measureHeader).observe(newsHeader);
+}
+
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[href]");
+  if (event.defaultPrevented || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
+      reducedMotion.matches || !link?.hash || link.hasAttribute("download") || link.matches(".skip-link") ||
+      (link.target && link.target !== "_self") || link.origin !== location.origin ||
+      link.pathname !== location.pathname || link.search !== location.search) return;
+
+  // Smooth the clicked anchor while preserving native fragment navigation and history.
+  const style = document.documentElement.style;
+  style.scrollBehavior = "smooth";
+  requestAnimationFrame(() => style.removeProperty("scroll-behavior"));
+});
+
 const externalLinkMark = `<svg class="external-link-mark" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
   <path class="external-link-outline" d="M2.5 9.5 9.5 2.5m-5 0h5v5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path class="external-link-serif" d="M2.11 9.95 1.91 9.73 8.03 3.51C6.85 3.53 5.41 3.66 4.05 3.89V3.17C6.16 3.03 8.55 2.65 10.1 1.9C9.34 3.6 8.97 5.92 8.87 8.01H8.16C8.39 6.7 8.51 5.24 8.53 4.04Z" fill="currentColor" display="none"/>

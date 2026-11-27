@@ -53,13 +53,14 @@ if (photoFeature) {
   const feature = document.querySelector("#photo-feature");
   const [firstFrame] = photoFeature.photoStory.frames;
   feature.innerHTML = `
-    <a class="photo-teaser" href="${photoStoryUrl(photoFeature).href}">
-      <div class="photo-teaser__image">
-        ${imageMarkup({ ...firstFrame.image, alt: "" }, "min(7rem, 25vw)")}
+    <a class="photo-feature__link" href="${photoStoryUrl(photoFeature).href}" aria-labelledby="photo-feature-title">
+      <div class="image-frame photo-feature__image">
+        ${imageMarkup({ ...firstFrame.image, alt: "" }, "(min-width: 50em) min(32vw, 30rem), 90vw")}
       </div>
       <div>
         <p class="story-meta">Фотоистория</p>
-        <h3>${html(photoFeature.displayTitle)}</h3>
+        <h2 id="photo-feature-title">${html(photoFeature.displayTitle)}</h2>
+        <p class="photo-feature__lead">${html(photoFeature.lead)}</p>
       </div>
     </a>`;
   feature.hidden = false;
