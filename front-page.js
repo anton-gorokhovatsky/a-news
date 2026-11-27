@@ -31,7 +31,7 @@ document.querySelector("#print-story").innerHTML = `
   <article class="print-story">
     <figure>
       <div class="image-frame print-photo">
-        ${imageMarkup(printStory.image, "(min-width: 50em) 47vw, calc(100vw - 40px)")}
+        ${imageMarkup(printStory.image, "(min-width: 50em) min(53vw, 50rem), calc(100vw - 40px)")}
       </div>
       <figcaption class="photo-credit">${html(printStory.image.credit)}</figcaption>
     </figure>
