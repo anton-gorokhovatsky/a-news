@@ -229,6 +229,8 @@ button, input { font: inherit; color: inherit; }
   line-height: 1.12;
 }
 
+.archive { margin-inline-end: auto; }
+
 .archive__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -440,7 +442,7 @@ button, input { font: inherit; color: inherit; }
 
 .reader-lead { margin-block-start: .55rem; }
 
-.material-heading, .material-cover, .material-related { max-inline-size: 66rem; }
+.archive, .material-heading, .material-cover, .material-related { max-inline-size: 66rem; }
 .material-heading .reader-lead { max-inline-size: 52ch; }
 .material-cover img { inline-size: 100%; block-size: auto; }
 
@@ -539,8 +541,7 @@ button, input { font: inherit; color: inherit; }
   }
 
   .photo-feature__link,
-  .print-story,
-  .archive__layout {
+  .print-story {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
     gap: var(--news-column-gap);
   }
@@ -553,6 +554,8 @@ button, input { font: inherit; color: inherit; }
   .print-photo { aspect-ratio: 2 / 1; }
   .print-photo img { object-position: center 43%; }
   .print-lead { text-wrap: balance; }
+
+  .archive__layout { row-gap: clamp(1.1rem, 2vw, 1.65rem); }
 
   .footer-navigation {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.23fr);
@@ -570,6 +573,20 @@ button, input { font: inherit; color: inherit; }
   .cover-photo { aspect-ratio: 1.8; }
 }
 
+@media (min-width: 64em) {
+  .archive-form {
+    display: grid;
+    grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
+    grid-template-areas: "label label" "search topics";
+    align-items: end;
+    column-gap: clamp(1rem, 2.5vw, 2.4rem);
+  }
+
+  .archive-form label[for="archive-search"] { grid-area: label; }
+  .archive-form .search-field { grid-area: search; }
+  .archive-topics { grid-area: topics; margin-block-start: 0; }
+}
+
 @media (min-width: 68em) {
   .news-front {
     grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr);
@@ -579,6 +596,26 @@ button, input { font: inherit; color: inherit; }
 
   /* Align the visible caps in the heading with the adjacent photo. */
   .latest { margin-block-start: calc(-1 * var(--news-serif-top-gap) * var(--news-section-title)); }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: clamp(1.5rem, 3.3vw, 3rem);
+    align-items: start;
+  }
+
+  .footer-navigation {
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3.5vw, 3.2rem);
+  }
+
+  .footer-inner > .site-theme { margin-block-start: 0; }
+
+  .footer-wordmark {
+    grid-column: 1 / -1;
+    margin-block-start: 0;
+    font-size: min(21.2cqi, 18.5rem);
+  }
 }
 
 @media (min-width: 60em) {
