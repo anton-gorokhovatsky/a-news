@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>A–News — журнал об архитектуре, дизайне и культуре</title>
+  <link rel="stylesheet" href="../vendor/a-house/fonts.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="../shared.js" defer></script>
+  <script src="./front-page.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content">К материалам</a>
+
+  <header class="masthead shell">
+    <div class="masthead__utility">
+      <a class="house-link" href="https://ahouseproject.com/">A–House <span aria-hidden="true">↗</span></a>
+      <time datetime="2026-11-27">27 ноября 2026</time>
+    </div>
+    <div class="masthead__identity">
+      <h1>A–NEWS</h1>
+      <p>Журнал об архитектуре, дизайне и культуре</p>
+    </div>
+    <nav class="masthead__nav" aria-label="Разделы журнала">
+      <a href="#latest">Свежее</a>
+      <a href="#in-print">Из печати</a>
+      <a href="#archive">Архив</a>
+      <a class="search-jump" href="#archive-search">
+        <span class="search-icon" aria-hidden="true"></span>
+        Поиск
+      </a>
+    </nav>
+  </header>
+
+  <main class="shell" id="content" tabindex="-1">
+    <noscript>
+      <p>Для просмотра макета включите JavaScript или <a href="https://news.ahouseproject.com/">откройте журнал A–News</a>.</p>
+    </noscript>
+
+    <section class="cover" aria-label="Выбор редакции" id="cover"></section>
+
+    <section class="journal-section" id="latest" aria-labelledby="latest-title">
+      <header class="section-head">
+        <h2 id="latest-title">Свежее</h2>
+        <a class="text-link" href="#archive">К архиву <span aria-hidden="true">↓</span></a>
+      </header>
+      <ul class="latest-list" id="latest-list" role="list"></ul>
+    </section>
+
+    <section class="journal-section" id="in-print" aria-labelledby="print-title">
+      <header class="section-head">
+        <h2 id="print-title">Из печати</h2>
+        <a class="text-link" href="https://ahouseproject.com/press">Издательство A–Press <span aria-hidden="true">↗</span></a>
+      </header>
+      <div id="print-story"></div>
+    </section>
+
+    <section class="journal-section archive" id="archive" aria-labelledby="archive-title">
+      <header class="section-head">
+        <h2 id="archive-title">Архив</h2>
+        <a class="text-link" href="https://news.ahouseproject.com/">Весь журнал <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="archive__layout">
+        <form class="archive-form" id="archive-form" role="search" action="#archive">
+          <label for="archive-search">Поиск по материалам</label>
+          <div class="search-field">
+            <input type="search" id="archive-search" name="q" placeholder="Название, тема, бюро" maxlength="120" autocomplete="off">
+            <button type="button" id="clear-query" hidden>Очистить</button>
+          </div>
+          <fieldset class="archive-topics" id="archive-topics">
+            <legend class="sr-only">Тема</legend>
+          </fieldset>
+        </form>
+        <div class="archive-results">
+          <p id="results-status" class="sr-only" role="status"></p>
+          <p id="empty-results" hidden>Материалы не найдены. Попробуйте другой запрос или выберите другую тему.</p>
+          <ul id="archive-list" role="list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div class="footer__identity">
+      <a class="footer__wordmark" href="#top" aria-label="A–News, к началу страницы">A–NEWS</a>
+      <p>Онлайн-журнал A–House</p>
+    </div>
+    <nav aria-label="Сайты A–House">
+      <a href="https://ahouseproject.com/">A–House <span aria-hidden="true">↗</span></a>
+      <a href="https://aindexproject.com/">A–Index <span aria-hidden="true">↗</span></a>
+      <a href="https://ahouseproject.com/press">A–Press <span aria-hidden="true">↗</span></a>
+      <a href="https://t.me/ahouseproject">Telegram <span aria-hidden="true">↗</span></a>
+    </nav>
+  </footer>
+</body>
+</html>

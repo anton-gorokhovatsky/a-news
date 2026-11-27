@@ -1,0 +1,243 @@
+/* Reading sizes are shared by the main site, publications and service screens.
+   The lettering inside posters, research diagrams and the wordmark is artwork. */
+:root {
+  --display: 'Times New Roman Cyr Condensed', 'Noto Serif', Georgia, serif;
+  --text: 'Apercu Condensed Pro', Arial, Helvetica, sans-serif;
+  --pro-text: 'Apercu Pro', var(--text);
+  --reading-weight: 300;
+  --label-weight: 400;
+  --emphasis-weight: 500;
+  --leading-reading: 1.49;
+  --leading-lead: 1.43;
+  --type-display: clamp(2.5rem, 1.25rem + 5vw, 6.5rem);
+  --type-title: clamp(2rem, 1.45rem + 2.2vw, 3.5rem);
+  --type-page-title: clamp(var(--type-title), .25rem + 6.25vw, 5.9rem);
+  --type-section: clamp(1.625rem, 1.25rem + 1.3vw, 2.5rem);
+  --type-subsection: calc((var(--type-title) + var(--type-section)) / 2);
+  --type-card: clamp(1.25rem, 1.1rem + .65vw, 1.625rem);
+  --type-lead: clamp(1.125rem, 1.04rem + .4vw, 1.375rem);
+  --type-body: clamp(1.0625rem, 1.01rem + .24vw, 1.1875rem);
+  --type-ui: 1rem;
+  --type-caption: .9375rem;
+  --type-brand: 1.5rem;
+}
+/* A section shown on its own uses the page title scale. The overview uses its h2 scale. */
+.home-page .home-editorial:where(:not(#overview), [data-view]:not([data-view="overview"])) .section-title {
+  font: 400 var(--type-page-title)/1.1 var(--display);
+  letter-spacing: -.004em;
+  text-wrap: balance;
+  hyphens: manual;
+  overflow-wrap: break-word;
+}
+.home-editorial:not(.editorial-document) :is(.home-meta, .home-kicker, .home-section-head > a, .home-links, .home-section-tail, .home-action, figcaption, .press-page-links, .institution-links, .book-preview),
+.publication-reader :is(.publication-meta, .publication-back, figcaption, .publication-issue) {
+  font-family: var(--text);
+}
+.home-editorial:not(.editorial-document) :is(p, li, dd) :is(b, strong) { font-weight: 700; }
+
+.project-name { white-space: nowrap; word-break: normal; overflow-wrap: normal; hyphens: none; }
+.wrap-group { display: inline-block; inline-size: max-content; max-inline-size: 100%; hyphens: manual; overflow-wrap: break-word; }
+a > .wrap-group, a > .wrap-group > span { text-decoration: inherit; text-underline-offset: inherit; }
+.legal-name { display: inline-block; max-inline-size: 100%; overflow-wrap: break-word; hyphens: manual; vertical-align: top; }
+.legal-name > span { white-space: nowrap; }
+
+/* Imported CSS uses a different record ID on every page. Scope these role
+   rules through the shared content landmark so one change reaches all copies. */
+#allrecords #site-content :is(h1.t058__text-impact, h1.js-block-header-title, .t-feed__post-popup__title) {
+  font-size: var(--type-title);
+  line-height: 1.08;
+  margin-block: 0;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  hyphens: auto;
+}
+#allrecords #site-content :is(h2.t058__text-impact, h2.js-block-header-title, h2.t1241__title) {
+  font-size: var(--type-section);
+  line-height: 1.12;
+  margin-block-start: 0;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  hyphens: auto;
+}
+#site-content .t058__text-impact { font-weight: 400; }
+#site-content .site-address {
+  margin: .55em 0 0;
+  text-align: center;
+  font: var(--label-weight) var(--type-body)/1.35 var(--text);
+  color: #111;
+}
+#site-content :is(.t058__text-impact, .js-block-header-title, .t004 .t-text, .t1241__descr, .t153__title, .t-feed__post-popup__text) :is([data-customstyle], [style*="font-size"]) {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+#allrecords #site-content :is(.t004 .t-text, .t1053__title, .t-feed__post-popup__text, .t-redactor__text) {
+  font-family: var(--text);
+  font-size: var(--type-body);
+  font-weight: var(--reading-weight);
+  line-height: var(--leading-reading);
+}
+#allrecords #site-content :is(.t-rec:has(h1.t058__text-impact) + .t-rec .t004 .t-text, .t153__title, .t1241__descr, .t001__descr) {
+  font-family: var(--text);
+  font-size: var(--type-lead);
+  font-weight: var(--reading-weight);
+  line-height: var(--leading-lead);
+}
+#allrecords #site-content .t001__title {
+  margin-block: 0;
+  font-size: var(--type-display);
+  line-height: 1.04;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  hyphens: auto;
+}
+#allrecords #site-content :is(.t786__title, .t776__title, .t899__title) {
+  font-size: var(--type-card);
+  line-height: 1.16;
+  overflow-wrap: break-word;
+}
+.card-promise { display: block; margin-top: .25em; font-size: var(--type-body); line-height: 1.36; }
+#allrecords #site-content :is(.t786__descr, .t776__descr) {
+  font-family: var(--text);
+  font-size: var(--type-body);
+  font-weight: var(--reading-weight);
+  line-height: var(--leading-reading);
+}
+#allrecords #site-content :is(.t153__descr, .t001__uptitle, .t1053__uptitle, .t-feed__post-popup__date, .t-feed__post-popup__close-text) {
+  font-family: var(--text);
+  font-size: var(--type-caption);
+  font-weight: var(--label-weight);
+  line-height: 1.35;
+}
+#allrecords #site-content .t-btnflex__text { font-size: var(--type-ui); line-height: 1.2; }
+#t-footer .t389__list_item a { font-size: var(--type-ui); }
+#t-footer .t389__copyright { font-size: var(--type-caption); }
+
+/* The surrounding drawing scales as a unit. Reading text keeps the same
+   optical size as its counterpart in the unscaled page flow. */
+[data-type-role="section"] { --board-type: var(--type-section); }
+[data-type-role="body"], [data-type-role="detail"] { --board-type: var(--type-body); }
+[data-type-role="ui"] { --board-type: var(--type-ui); }
+[data-type-role="caption"], [data-type-role="benefits"] { --board-type: var(--type-caption); }
+#allrecords #site-content [data-type-role] > .tn-atom {
+  font-size: calc(var(--board-type) / var(--artboard-scale, 1));
+}
+/* Each resident poster is centred and already contains its own title. */
+[data-page="residents"] .t772 .t-card__btn-wrapper { margin-top: 0; text-align: center; }
+.missing-page, .archive-index { font-size: var(--type-body); line-height: var(--leading-reading); }
+.site-wordmark, .archive-index > a { font-size: var(--type-brand); }
+.missing-page h1, .archive-index h1 {
+  font-size: var(--type-display);
+  line-height: 1.04;
+  text-wrap: balance;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+.missing-page p { max-width: 50ch; }
+.missing-page .missing-code { font: var(--label-weight) var(--type-caption)/1.3 var(--text); }
+.missing-page nav { margin-top: 1.25em; gap: .5em 1.5em; }
+.missing-page nav a { display: inline-flex; align-items: center; min-block-size: 44px; }
+.archive-index ol { font-size: var(--type-card); }
+.archive-index time, .archive-index small { font: var(--label-weight) var(--type-caption)/1.4 var(--text); }
+.archive-index time { padding-top: .25em; white-space: nowrap; }
+.archive-index li { grid-template-columns: max-content minmax(0,1fr); gap: 1rem; }
+.archive-index li a { overflow-wrap: break-word; }
+.archive-index { container: publications / inline-size; }
+.archive-index > a { display: inline-flex; align-items: center; min-block-size: 44px; }
+.archive-topics { display: flex; flex-wrap: wrap; column-gap: 1.2em; margin: 1rem 0; }
+.archive-topics a { display: inline-flex; align-items: center; min-block-size: 44px; }
+@container publications (max-width: 17em) {
+  .archive-index li { grid-template-columns: minmax(0,1fr); gap: .15em; }
+  .archive-index time { padding-top: 0; }
+}
+.archive-article figcaption { font-size: var(--type-caption); line-height: 1.4; }
+
+.services-dialog, .services-product-description, .services-offer, .services-result { font-size: var(--type-body); }
+.services-dialog h2 { font-size: var(--type-section); }
+.services-dialog h3, .services-result h3 { font-size: var(--type-card); }
+.services-form :is(.t-input-title, .t-checkbox__control, .t-radio__control),
+.services-dialog :is(.services-primary, .services-close), .services-result-actions button, .services-demo-note {
+  font-size: var(--type-ui);
+}
+.services-eyebrow, .services-hint { font-size: var(--type-caption); }
+.services-form-status, .services-form .t-input-error[data-service-field-error] { font-size: var(--type-ui); }
+/* When larger type no longer fits a fixed drawing, let the same text,
+   links and photographs flow in reading order. The image remains independent. */
+#site-content .t396__artboard.reading-flow {
+  --artboard-scale: 1 !important;
+  box-sizing: border-box;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: center;
+  gap: .75rem;
+  padding: clamp(24px, 5vw, 72px) clamp(16px, 4vw, 56px);
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible;
+  zoom: 1 !important;
+}
+#site-content .reading-flow :is(.tn-group,.tn-molecule) { display: contents !important; }
+#site-content .reading-flow :is(.t396__carrier,.t396__filter,[data-elem-type="shape"]) { display: none !important; }
+#site-content .reading-flow .tn-elem {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  align-self: center;
+  width: min(100%, 42rem) !important;
+  height: auto !important;
+  min-width: 0 !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex: none !important;
+}
+#site-content .reading-flow [data-type-role] {
+  display: block !important;
+  animation: none !important;
+  opacity: 1 !important;
+  pointer-events: auto;
+  text-align: center;
+}
+#site-content .reading-flow [data-type-role] > .tn-atom {
+  display: block;
+  width: auto;
+  height: auto;
+  white-space: normal !important;
+  overflow: visible;
+  text-align: center;
+  line-height: 1.35;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+#site-content .reading-flow [data-type-role="caption"] { order: 0; }
+#site-content .reading-flow [data-type-role="section"] { order: 1; }
+#site-content .reading-flow [data-type-role="detail"] { order: 2; }
+#site-content .reading-flow [data-type-role="body"] { order: 3; }
+#site-content .reading-flow [data-type-role="benefits"] { --board-type: var(--type-body); order: 4; }
+#site-content .reading-flow [data-type-role="ui"] { order: 5; }
+#site-content .reading-flow [data-elem-type="button"] > .tn-atom {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: .4em .8em;
+  line-height: 1.25;
+}
+#site-content .reading-flow :is([data-elem-type="image"],[data-elem-type="gallery"]) { display: block; order: 6; }
+#site-content .reading-flow [data-elem-type="image"] img { display: block; margin: auto; width: 100%; height: auto; object-fit: contain; max-height: 85vh; }
+#site-content .reading-flow [data-elem-type="gallery"] { aspect-ratio: 4 / 3; }
+@media (min-width: 64em) {
+  #site-content .reading-flow:has([data-elem-type="image"],[data-elem-type="gallery"]) {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    grid-auto-flow: row dense;
+    column-gap: 3rem;
+  }
+  #site-content .reading-flow [data-type-role] { grid-column: 1; }
+  #site-content .reading-flow :is([data-elem-type="image"],[data-elem-type="gallery"]) {
+    grid-column: 2;
+    grid-row: 1 / span var(--reading-rows);
+  }
+}
