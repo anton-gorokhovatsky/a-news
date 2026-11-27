@@ -107,6 +107,25 @@ button, input { font: inherit; color: inherit; }
 .news-nav .wide-nav { display: none; }
 .news-nav a:focus-visible { text-decoration: underline; }
 
+.material-header .header-inner {
+  justify-content: flex-start;
+  gap: 0 clamp(.8rem, 1.6vw, 1.5rem);
+  padding-block: .35rem;
+}
+
+.material-header .news-nav {
+  margin-inline-start: auto;
+  justify-content: flex-start;
+  column-gap: 1rem;
+}
+
+.journal-intro {
+  flex: 1 0 100%;
+  order: 1;
+  color: var(--ah-quiet);
+  font: var(--label-weight) var(--type-caption)/1.4 var(--text);
+}
+
 .news-intro {
   max-inline-size: 46rem;
   padding-block: .35rem var(--news-group-gap);
@@ -150,7 +169,7 @@ button, input { font: inherit; color: inherit; }
 
 .cover-link h2,
 .section-head h2,
-.latest-list h3,
+.latest-list :is(h2, h3),
 .photo-feature h2,
 .print-story h3 {
   font-family: var(--display);
@@ -198,13 +217,13 @@ button, input { font: inherit; color: inherit; }
 }
 
 .latest-list > li { min-inline-size: 0; }
-.latest-list h3 {
+.latest-list :is(h2, h3) {
   font-size: clamp(1.36rem, 1.1rem + 1vw, 1.95rem);
   line-height: 1.14;
   text-wrap: pretty;
 }
 
-.latest-list h3 [data-external-label],
+.latest-list :is(h2, h3) [data-external-label],
 .print-story h3 [data-external-label] { overflow-wrap: anywhere; }
 
 .latest-list .story-lead {
@@ -435,22 +454,29 @@ button, input { font: inherit; color: inherit; }
   padding-block: var(--news-group-gap) var(--news-chapter-gap);
 }
 
-.reader-with-intro { padding-block-start: .75rem; }
-
-.journal-intro {
+.material-meta {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0 clamp(.8rem, 2vw, 1.6rem);
-  max-inline-size: 66rem;
-  padding-block-end: .2rem;
-  border-block-end: 1px solid var(--ah-rule);
-  margin-block-end: var(--news-story-gap);
+  gap: 0 .75rem;
 }
 
-.journal-intro p {
-  color: var(--ah-quiet);
-  font: var(--label-weight) var(--type-ui)/1.35 var(--text);
+.material-topic-link {
+  color: var(--ah-ink);
+  font: inherit;
+}
+
+.topic-link {
+  display: block;
+  min-block-size: 44px;
+  text-decoration: none;
+}
+
+.topic-link h2 > span {
+  text-decoration: underline;
+  text-decoration-color: var(--ah-rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .12em;
 }
 
 .reader-heading {
@@ -467,7 +493,7 @@ button, input { font: inherit; color: inherit; }
 
 .reader-lead { margin-block-start: .55rem; }
 
-.archive, .material-heading, .material-cover, .material-related { max-inline-size: 66rem; }
+.archive, .material-heading, .material-cover, .material-related, .topic-list { max-inline-size: 66rem; }
 .material-heading .reader-lead { max-inline-size: 52ch; }
 .material-cover img { inline-size: 100%; block-size: auto; }
 
@@ -572,6 +598,10 @@ button, input { font: inherit; color: inherit; }
 @media (max-width: 22em) {
   /* Use the section scale in the narrowest column. The title can still double. */
   :root { --news-feature-title: var(--news-section-title); }
+
+  :root:where([data-material], [data-topic]) { scroll-padding-block-start: .5em; }
+  :root:where([data-material], [data-topic]) .news-header { position: static; }
+  .news-nav-location { display: none; }
 }
 
 @media (min-width: 39em) {
@@ -603,7 +633,8 @@ button, input { font: inherit; color: inherit; }
     column-gap: clamp(1.25rem, 2.65vw, 2.6rem);
   }
 
-  .material-related .latest-list {
+  .material-related .latest-list,
+  .topic-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--news-column-gap);
   }
@@ -642,6 +673,16 @@ button, input { font: inherit; color: inherit; }
 }
 
 @media (min-width: 64em) {
+  .material-header .header-inner {
+    align-items: baseline;
+    align-content: center;
+  }
+
+  .journal-intro {
+    flex: 0 1 auto;
+    order: 0;
+  }
+
   .archive-form {
     display: grid;
     grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);

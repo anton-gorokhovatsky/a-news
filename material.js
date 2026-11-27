@@ -4,12 +4,19 @@ const material = stories.find((story) => story.slug === document.documentElement
 const materialCover = document.querySelector("#material-cover");
 const contextLink = document.querySelector("#material-context-link");
 const ending = new URLSearchParams(location.search).get("ending");
+const topicAddress = new URL("topics/architecture/", siteRoot);
+topicAddress.searchParams.set("from", material.slug);
+const topicEndLink = document.querySelector("#material-topic-end");
+topicEndLink.href = topicAddress.href;
 const nextStory = ending === "photo" && stories.find(
   (story) => story.slug === material.continuation?.slug && story.photoStory?.frames.length,
 );
 
 document.querySelector("#material-heading").innerHTML = `
-  <p class="story-meta">${html(material.series)} · ${timestamp(material, dateWithMonth)}</p>
+  <p class="story-meta material-meta">
+    <span>${html(material.series)} · ${timestamp(material, dateWithMonth)}</span>
+    <a class="section-link material-topic-link" href="${html(topicAddress.href)}">${html(topicNames.architecture)}</a>
+  </p>
   <h1 id="material-title">${html(material.displayTitle ?? material.title)}</h1>
   <p class="reader-lead">${html(material.lead)}</p>`;
 
@@ -47,7 +54,7 @@ if (nextStory) {
 
   const related = document.querySelector("#material-related");
   const endLinks = document.querySelector("#material-end-links");
-  endLinks.append(related.querySelector(".section-link"));
+  endLinks.append(topicEndLink);
   endLinks.querySelector(".material-source a").classList.add("section-link");
   related.hidden = true;
   continuation.hidden = false;
