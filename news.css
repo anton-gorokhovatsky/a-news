@@ -435,6 +435,24 @@ button, input { font: inherit; color: inherit; }
   padding-block: var(--news-group-gap) var(--news-chapter-gap);
 }
 
+.reader-with-intro { padding-block-start: .75rem; }
+
+.journal-intro {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 clamp(.8rem, 2vw, 1.6rem);
+  max-inline-size: 66rem;
+  padding-block-end: .2rem;
+  border-block-end: 1px solid var(--ah-rule);
+  margin-block-end: var(--news-story-gap);
+}
+
+.journal-intro p {
+  color: var(--ah-quiet);
+  font: var(--label-weight) var(--type-ui)/1.35 var(--text);
+}
+
 .reader-heading {
   max-inline-size: 58ch;
   margin-block-end: clamp(.75rem, 2vw, 1.5rem);
