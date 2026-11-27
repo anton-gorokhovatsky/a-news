@@ -446,12 +446,11 @@ button, input { font: inherit; color: inherit; }
 .material-heading .reader-lead { max-inline-size: 52ch; }
 .material-cover img { inline-size: 100%; block-size: auto; }
 
-.material-copy {
-  max-inline-size: 60ch;
-  margin-block-start: var(--news-group-gap);
-}
+.material-copy, .material-continuation, .material-end-links { max-inline-size: 60ch; }
+.material-copy { margin-block-start: var(--news-group-gap); }
 
-.material-copy h2 {
+.material-copy h2,
+.material-continuation h2 {
   font: 400 var(--type-section)/1.12 var(--display);
   text-wrap: balance;
   margin-block-end: .45rem;
@@ -459,7 +458,33 @@ button, input { font: inherit; color: inherit; }
 
 .material-copy h2:not(:first-child) { margin-block-start: var(--news-story-gap); }
 .material-copy p + p { margin-block-start: .7rem; }
-.material-copy .material-source { margin-block-start: var(--news-story-gap); }
+.material-end-links { margin-block-start: var(--news-story-gap); }
+
+.material-continuation {
+  margin-block-start: var(--news-story-gap);
+  border-block-start: 1px solid var(--ah-rule);
+  padding-block-start: clamp(.875rem, 1.3vw, 1.125rem);
+}
+
+.material-continuation__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: .9rem;
+  text-decoration: none;
+}
+
+.material-continuation__image { aspect-ratio: 3 / 2; }
+#material-next-lead { text-wrap: pretty; }
+
+.material-continuation:not([hidden]) + .material-end-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.15rem;
+  margin-block-start: .85rem;
+}
+
+.material-end-links > p { min-inline-size: 0; }
 
 .photo-controls {
   display: flex;
@@ -534,6 +559,11 @@ button, input { font: inherit; color: inherit; }
 
 @media (min-width: 50em) {
   .header-inner { min-block-size: 4.8rem; }
+
+  .material-continuation__link {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    column-gap: clamp(1.25rem, 2.65vw, 2.6rem);
+  }
 
   .material-related .latest-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -26,7 +26,9 @@ if (sourceParams.get("from") === "archive") {
   readerBack.textContent = "К архиву";
 } else if (entryMaterial) {
   const materialAddress = new URL(materialUrl(entryMaterial));
-  materialAddress.hash = "material-context";
+  const photoEnding = sourceParams.get("ending") === "photo" && entryMaterial.continuation?.slug === photoArticle.slug;
+  if (photoEnding) materialAddress.searchParams.set("ending", "photo");
+  materialAddress.hash = photoEnding && sourceParams.get("from") === "continuation" ? "material-next" : "material-context";
   readerBack.href = materialAddress.href;
   readerBack.textContent = "К статье";
 }

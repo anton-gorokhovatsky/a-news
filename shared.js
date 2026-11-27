@@ -7,6 +7,10 @@ const stories = [
     "displayTitle": "Музей Гугген­хайма в Бильбао",
     "series": "Глазами архитектора",
     "materialPath": "material/bilbao/",
+    "continuation": {
+      "slug": "natyurmort-portret-pejzazh-arhitektura-novoj-vystavki-v-ges-2",
+      "lead": "Что открывается зрителю за поворотом, в зеркальном проёме и на пороге светлого зала."
+    },
     "date": "2026-11-27",
     "topics": [
       "architecture",
