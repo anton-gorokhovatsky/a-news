@@ -67,13 +67,14 @@ function showResults(updateAddress = false) {
       if (topic) format.searchParams.set("topic", topic);
       formatLink = `<a class="archive-format-link" href="${html(format.href)}">Фотоистория<span class="sr-only"> «${html(story.displayTitle)}»</span></a>`;
     }
+    const date = `<span class="archive-entry__date">${timestamp(story, dateWithYear)}</span>`;
     return `
-      <li>
+      <li${formatLink ? ' class="archive-entry-with-format"' : ""}>
         <a class="story-link archive-entry" href="${results.hasAttribute("data-material-links") ? materialUrl(story) : articleUrl(story)}">
           <span class="archive-entry__title">${html(story.title)}</span>
-          <span class="archive-entry__date">${timestamp(story, dateWithYear)}</span>
+          ${formatLink ? "" : date}
         </a>
-        ${formatLink}
+        ${formatLink ? `<div class="archive-entry-details">${date}${formatLink}</div>` : ""}
       </li>`;
   }).join("");
 
