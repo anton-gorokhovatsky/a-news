@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./vendor/a-house/external-links.css">
   <link rel="stylesheet" href="./news.css">
   <script src="./shared.js" defer></script>
+  <script src="./archive.js" defer></script>
   <script src="./front-page.js" defer></script>
 </head>
 <body id="top">
@@ -46,6 +47,7 @@
         <ul class="latest-list" id="latest-list" role="list"></ul>
       </section>
     </div>
+    <aside class="latest-photo" id="photo-feature" hidden></aside>
 
     <section class="news-chapter" id="in-print" aria-labelledby="print-title">
       <header class="section-head">
@@ -73,8 +75,11 @@
         </form>
         <div class="archive-results">
           <p id="results-status" class="sr-only" role="status"></p>
-          <p id="empty-results" hidden>Материалы не найдены. Попробуйте другой запрос или выберите другую тему.</p>
-          <ul id="archive-list" role="list"></ul>
+          <div id="empty-results" hidden>
+            <p>Материалы не найдены. Попробуйте другой запрос или выберите другую рубрику.</p>
+            <button id="clear-topic" class="text-button" type="button" hidden>Снять фильтр</button>
+          </div>
+          <ul id="archive-list" data-photo-stories role="list"></ul>
         </div>
       </div>
     </section>

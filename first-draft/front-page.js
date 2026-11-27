@@ -1,5 +1,8 @@
 "use strict";
 
+const [coverStory, ...otherStories] = stories;
+const latestStories = otherStories.slice(0, 3);
+
 document.querySelector("#cover").innerHTML = `
   <article>
     <a class="story-link feature" href="${articleUrl(coverStory)}" aria-labelledby="cover-title">
